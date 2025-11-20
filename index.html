@@ -1,199 +1,346 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Happy Birthday Aniket 🎉</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aarushi ❤️ Tarun</title>
 
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 
-  <!-- Animate.css + Swiper -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+<style>
 
-  <style>
-    :root{--accent:#ff2a6d;--pink:#ff9bc4}
-    body {margin:0;font-family:'Poppins',sans-serif;background:linear-gradient(135deg,var(--pink),#ffdbe6);overflow-x:hidden}
-    .container{max-width:1100px;margin:0 auto;padding:28px}
-    .title{color:#fff;font-size:44px;font-weight:800;text-align:center;margin-top:10px;text-shadow:0 6px 18px rgba(0,0,0,0.12)}
+body {
+  background: linear-gradient(135deg, #ffe2ec, #ffd6e8, #fff1f7);
+  font-family: 'Poppins', sans-serif;
+  overflow-x: hidden;
+}
 
-    /* Teddy */
-    .teddy-wrap{display:flex;justify-content:center;margin:18px 0}
-    .teddy{width:200px;cursor:pointer;transform-origin:center;animation:floaty 3s ease-in-out infinite}
-    @keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
+/* Floating hearts */
+.heart {
+  position: fixed;
+  bottom: -10px;
+  color: rgba(255, 0, 80, 0.7);
+  font-size: 20px;
+  animation: floatUp 6s linear infinite;
+  user-select: none;
+  z-index: 999;
+}
 
-    /* Buttons */
-    .controls{display:flex;justify-content:center;gap:12px;margin-bottom:18px}
-    .btn{background:var(--accent);color:#fff;padding:12px 20px;border-radius:40px;border:none;font-weight:700;cursor:pointer;box-shadow:0 8px 20px rgba(255,42,109,0.18)}
-    .btn.ghost{background:transparent;border:2px solid #fff}
+@keyframes floatUp {
+  0% { transform: translateY(0) rotate(0); opacity: 1; }
+  100% { transform: translateY(-130vh) rotate(360deg); opacity: 0; }
+}
 
-    /* Surprise box */
-    .surprise{display:none;background:#fff;border-radius:16px;padding:18px;margin:16px auto;max-width:720px;box-shadow:0 10px 30px rgba(0,0,0,0.12);text-align:center}
-    .surprise h2{color:var(--accent);margin:6px 0}
+/* Hero Section */
+.hero {
+  text-align: center;
+  padding: 120px 20px;
+  animation: fadeIn 2s ease-in-out;
+}
+.hero h1 {
+  font-size: 3.7rem;
+  font-weight: 700;
+  color: #ff5f8b;
+  text-shadow: 0 0 10px rgba(255, 80, 130, 0.7);
+}
 
-    /* Photo gallery (swiper) */
-    .gallery-wrap{margin-top:22px}
-    .swiper-slide{display:flex;flex-direction:column;align-items:center;gap:10px}
-    .photo-card{width:240px;height:160px;border-radius:12px;overflow:hidden;box-shadow:0 8px 20px rgba(0,0,0,0.12)}
-    .photo-card img{width:100%;height:100%;object-fit:cover}
+/* BIG LINE */
+.special-line {
+  margin-top: -10px;
+  margin-bottom: 40px;
+  font-size: 2.4rem;
+  font-weight: 700;
+  text-align: center;
+  color: #ff2e6e;
+  text-shadow: 0 0 15px rgba(255, 40, 100, 0.6);
+  animation: heartBeat 3s ease-in-out infinite, fadeIn 2s ease-in-out;
+}
 
-    /* Floating hearts/teddies */
-    .float-emoji{position:fixed;font-size:28px;pointer-events:none;opacity:0.9}
+@keyframes heartBeat {
+  0% { transform: scale(1); }
+  20% { transform: scale(1.08); }
+  40% { transform: scale(1); }
+  60% { transform: scale(1.10); }
+  80% { transform: scale(1); }
+  100% { transform: scale(1); }
+}
 
-    /* Fireworks canvas sits behind content */
-    #fireworks{position:fixed;left:0;top:0;width:100%;height:100%;z-index:0;pointer-events:none}
+/* Paragraph */
+.soft-text {
+  font-size: 1.2rem;
+  color: #7a4a57;
+  line-height: 1.7;
+  text-align: center;
+  max-width: 850px;
+  margin: auto;
+  margin-top: 20px;
+}
 
-    /* Page content sits above */
-    .page{position:relative;z-index:2}
+/* Teddy Section */
+.teddy-card {
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 18px;
+  padding: 30px;
+  backdrop-filter: blur(10px);
+  transition: .4s;
+  text-align: center;
+  box-shadow: 0 8px 25px rgba(255, 0, 130, 0.2);
+}
+.teddy-card:hover {
+  transform: translateY(-8px);
+}
 
-    /* audio controls style */
-    .audio-control{position:fixed;left:18px;bottom:18px;z-index:99;background:#fff;border-radius:12px;padding:8px 10px;box-shadow:0 8px 20px rgba(0,0,0,0.12)}
+.teddy-card img {
+  width: 100%;
+  max-width: 220px;
+  height: auto;
+  margin: 10px;
+  border-radius: 12px;
+}
 
-    /* responsive */
-    @media (max-width:900px){.swiper-slide .photo-card{width:160px;height:110px}.swiper-slide{margin-bottom:12px}.title{font-size:30px}.teddy{width:140px}}
-  </style>
+/* Buttons */
+.love-btn {
+  background: #ff6f9e;
+  border: none;
+  padding: 12px 25px;
+  font-size: 1.1rem;
+  color: white;
+  border-radius: 50px;
+  transition: 0.3s;
+  box-shadow: 0 5px 15px rgba(255, 0, 80, 0.3);
+}
+.love-btn:hover {
+  background: #ff4d85;
+  transform: scale(1.05);
+}
+
+/* Pop-up text */
+.note-box {
+  display: none;
+  background: #fff5fa;
+  font-size: 1.1rem;
+  color: #703447;
+  padding: 25px;
+  margin-top: 15px;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(255, 0, 130, 0.2);
+  animation: fadeIn 0.6s ease-in-out;
+}
+
+/* Section Titles */
+.section-title {
+  text-align: center;
+  font-size: 2.4rem;
+  color: #ff4f80;
+  font-weight: 600;
+  margin-top: 80px;
+  margin-bottom: 25px;
+}
+
+/* Small Cards */
+.moment {
+  background: #ffe5ef;
+  padding: 25px;
+  border-radius: 20px;
+  text-align: center;
+  transition: .3s;
+  box-shadow: 0 7px 20px rgba(255, 80, 130, 0.25);
+}
+.moment:hover {
+  transform: translateY(-8px) scale(1.03);
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 50px 10px;
+  color: #ff4d80;
+  font-size: 1.4rem;
+  margin-top: 80px;
+}
+
+/* ---------------- RESPONSIVE FIXES ---------------- */
+
+@media(max-width: 768px) {
+  .hero h1 {
+    font-size: 2.7rem;
+  }
+
+  .special-line {
+    font-size: 1.9rem;
+    padding: 0 10px;
+  }
+
+  .soft-text {
+    font-size: 1rem;
+    padding: 0 10px;
+  }
+
+  .section-title {
+    font-size: 2rem;
+  }
+
+  .love-btn {
+    width: 90%;
+  }
+}
+
+@media(max-width: 480px) {
+  .hero h1 {
+    font-size: 2.2rem;
+  }
+
+  .special-line {
+    font-size: 1.6rem;
+  }
+
+  footer {
+    font-size: 1.1rem;
+  }
+}
+
+.teddy-img {
+  width: 100%;
+  height: 260px;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+
+</style>
 </head>
+
 <body>
 
-<canvas id="fireworks"></canvas>
+<script>
+setInterval(() => {
+  let heart = document.createElement("div");
+  heart.innerHTML = "❤️";
+  heart.classList.add("heart");
+  heart.style.left = Math.random() * window.innerWidth + "px";
+  heart.style.fontSize = (20 + Math.random() * 30) + "px";
+  document.body.appendChild(heart);
+  setTimeout(() => heart.remove(), 6000);
+}, 500);
+</script>
 
-<div class="page">
-  <div class="container">
-    <h1 class="title animate__animated animate__tada">🎉 Happy Birthday Aniket 🎉</h1>
+<!-- HERO -->
+<section class="hero">
+  <h1>Aarushi ❤️ Tarun</h1>
 
-    <div class="teddy-wrap">
-      <img id="teddy" class="teddy animate__animated animate__bounceIn" src="https://pngimg.com/uploads/teddy_bear/teddy_bear_PNG84.png" alt="teddy" />
+  <p class="soft-text">
+    From Aarushi… to the boy who didn’t even try,  
+    yet ended up becoming the softest part of her day.  
+    This little world is just for you, Tarun —  
+    because you unknowingly mean more than you think.
+  </p>
+</section>
+
+<!-- BIG LINE -->
+<h2 class="special-line">
+  I'm always with you… in every situation. <br>
+  Jaha koi nahi hoga… waha bhi main hoongi. 💗
+</h2>
+
+<!-- TEDDY SECTION -->
+<!-- TEDDY SECTION -->
+<h2 class="section-title">🧸 A Cute Teddy For My Cute Boy</h2>
+<div class="container">
+  <div class="teddy-card">
+    
+    <div class="row justify-content-center g-3">
+
+      <div class="col-12 col-sm-6 col-md-4">
+        <img src="img/image copy.png" class="img-fluid teddy-img">
+      </div>
+
+      <div class="col-12 col-sm-6 col-md-4">
+        <img src="img/image copy 2.png" class="img-fluid teddy-img">
+      </div>
+
+      <div class="col-12 col-sm-6 col-md-4">
+        <img src="img/image.png" class="img-fluid teddy-img">
+      </div>
+
     </div>
 
-    <div class="controls">
-      <button class="btn" id="surpriseBtn">Open Surprise 🎁</button>
-      <button class="btn ghost" id="musicToggle">Play Music 🎵</button>
-      <button class="btn ghost" id="fireToggle">Fireworks ✨</button>
-    </div>
+    <p class="mt-3">
+      You don’t say much… but you feel deeply.<br>
+      And I understand that without you explaining anything.<br>
+      This teddy is exactly how I see you — soft, warm-hearted and unintentionally adorable.
+    </p>
 
-    <div id="surpriseBox" class="surprise animate__animated animate__zoomIn">
-      <h2>Surprise, Aniket! 🎊</h2>
-      <p style="font-size:16px;color:#444;margin:6px 0 12px">Wishing you a day filled with love, laughter and very special moments.</p>
-      <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
-        <button class="btn" onclick="openConfetti()">Make it Rain 🎉</button>
-        <button class="btn" onclick="toggleHearts()">Send Hearts ❤️</button>
+  </div>
+</div>
+
+
+<!-- NOTES -->
+<h2 class="section-title">💌 Little Things I Want To Tell You</h2>
+<div class="container text-center">
+
+  <button class="love-btn" onclick="toggleNote(1)">Why I Like You</button>
+  <div id="note1" class="note-box">
+    Tarun… I like you in a very different way.  
+    Not loud, not dramatic — but soft, steady and strong.
+  </div>
+
+  <br><br>
+
+  <button class="love-btn" onclick="toggleNote(2)">What You Mean</button>
+  <div id="note2" class="note-box">
+    Tum mere liye important ho…  
+    Even my bad days turn gentle when it's you.
+  </div>
+
+  <br><br>
+
+  <button class="love-btn" onclick="toggleNote(3)">A Secret</button>
+  <div id="note3" class="note-box">
+    Tumhara naam aate hi meri smile thodi zyada real ho jaati hai.  
+    And my heart chooses you every time.
+  </div>
+
+</div>
+
+<script>
+function toggleNote(id) {
+  let box = document.getElementById("note" + id);
+  box.style.display = box.style.display === "block" ? "none" : "block";
+}
+</script>
+
+<!-- MOMENTS -->
+<h2 class="section-title">💖 If I Could Tell You What You Are To Me…</h2>
+<div class="container">
+  <div class="row g-4">
+    
+    <div class="col-12 col-md-4">
+      <div class="moment">
+        <h4>My Favourite Person</h4>
+        <p>You became my favourite without even trying.</p>
       </div>
     </div>
 
-    <!-- Gallery (Swiper) -->
-    <div class="gallery-wrap">
-      <h3 style="color:#fff;text-align:center;margin-bottom:12px">Memories — add your photos below</h3>
-      <div class="swiper myGallery">
-        <div class="swiper-wrapper">
+    <div class="col-12 col-md-4">
+      <div class="moment">
+        <h4>My Comfort</h4>
+        <p>Your presence feels like peace after a long day.</p>
+      </div>
+    </div>
 
-          <!-- Slide 1 -->
-          <div class="swiper-slide">
-            <div class="photo-card"><img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e"></div>
-            <div style="color:#fff;margin-top:6px;font-weight:600">Smile</div>
-          </div>
-
-          <!-- Slide 2 -->
-          <div class="swiper-slide">
-            <div class="photo-card"><img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde"></div>
-            <div style="color:#fff;margin-top:6px;font-weight:600">Friends</div>
-          </div>
-
-          <!-- Slide 3 -->
-          <div class="swiper-slide">
-            <div class="photo-card"><img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d"></div>
-            <div style="color:#fff;margin-top:6px;font-weight:600">Party</div>
-          </div>
-
-          <!-- Slide 4 -->
-          <div class="swiper-slide">
-            <div class="photo-card"><img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e"></div>
-            <div style="color:#fff;margin-top:6px;font-weight:600">Memories</div>
-          </div>
-
-        </div>
-        <!-- navigation (on sides) -->
-        <div class="swiper-button-next" style="color:#fff"></div>
-        <div class="swiper-button-prev" style="color:#fff"></div>
+    <div class="col-12 col-md-4">
+      <div class="moment">
+        <h4>My Peace</h4>
+        <p>Your vibe calms my heart in ways I can't explain.</p>
       </div>
     </div>
 
   </div>
 </div>
 
-<!-- audio control (local file path included) -->
-<div class="audio-control">
-  <audio id="bgAudio" loop src="/mnt/data/Screenshot 2025-11-19 120357.png"></audio>
-  <span id="audioLabel" style="font-weight:700;color:#333;">Music: Off</span>
-</div>
+<footer>
+  Made With ❤️ By Aarushi — For the boy who became special in the softest way.
+</footer>
 
-<!-- Swiper + libs -->
-<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-
-<script>
-  // Initialize gallery swiper
-  const gallery = new Swiper('.myGallery', {
-    slidesPerView: 3,
-    spaceBetween: 22,
-    navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
-    breakpoints: { 0:{slidesPerView:1}, 640:{slidesPerView:2}, 900:{slidesPerView:3} }
-  });
-
-  // Teddy click — playful animation and small popup
-  const teddy = document.getElementById('teddy');
-  teddy.addEventListener('click', () => {
-    teddy.classList.add('animate__heartBeat');
-    setTimeout(()=>teddy.classList.remove('animate__heartBeat'),900);
-    alert('🎈 Hey Aniket! Big hugs and happy wishes!');
-  });
-
-  // Surprise box toggle
-  document.getElementById('surpriseBtn').addEventListener('click', ()=>{
-    const box = document.getElementById('surpriseBox');
-    box.style.display = box.style.display==='block'?'none':'block';
-    if(box.style.display==='block') box.scrollIntoView({behavior:'smooth'});
-  });
-
-  // Audio toggle
-  const audio = document.getElementById('bgAudio');
-  const audioLabel = document.getElementById('audioLabel');
-  document.getElementById('musicToggle').addEventListener('click', ()=>{
-    if(audio.paused){ audio.play(); audioLabel.textContent='Music: On'; } else { audio.pause(); audioLabel.textContent='Music: Off'; }
-  });
-
-  // Hearts toggle
-  let heartsOn=false;
-  function toggleHearts(){ heartsOn=!heartsOn; if(heartsOn) spawnHearts(); }
-  function toggleHearts(){ 
-  heartsOn = !heartsOn; 
-  if(heartsOn) spawnHearts(); 
-}
-
-  function spawnHearts(){ if(!heartsOn) return; const heart = document.createElement('div'); heart.className='float-emoji'; heart.innerHTML='❤'; heart.style.left=Math.random()*100+'vw'; heart.style.fontSize=(20+Math.random()*30)+'px'; document.body.appendChild(heart); setTimeout(()=>heart.remove(),6000); setTimeout(spawnHearts,300); }
-
-  // Confetti (simple canvas) when clicking Make it Rain
-  function openConfetti(){
-    for(let i=0;i<60;i++){
-      const el=document.createElement('div'); el.innerHTML='🎊'; el.style.position='fixed'; el.style.left=Math.random()*100+'vw'; el.style.top='-30px'; el.style.fontSize=(12+Math.random()*28)+'px'; el.style.zIndex=999; document.body.appendChild(el);
-      const dur=3000+Math.random()*2000; el.animate([{transform:'translateY(0) rotate(0)'},{transform:'translateY(110vh) rotate(720deg)'}],{duration:dur,iterations:1,easing:'cubic-bezier(.17,.67,.83,.67)'});
-      setTimeout(()=>el.remove(),dur+50);
-    }
-  }
-
-  // Fireworks canvas simple implementation
-  const canvas=document.getElementById('fireworks'); const ctx=canvas.getContext('2d'); let W, H; function resize(){W=canvas.width=innerWidth;H=canvas.height=innerHeight;} resize(); addEventListener('resize',resize);
-  let fireworksOn=false; document.getElementById('fireToggle').addEventListener('click',()=>{fireworksOn=!fireworksOn; if(fireworksOn) loopFireworks();});
-
-  // fireworks particles
-  function loopFireworks(){ if(!fireworksOn) return; createFirework(Math.random()*W*0.8+W*0.1, Math.random()*H*0.4+H*0.1); setTimeout(loopFireworks,400+Math.random()*600); }
-  function createFirework(x,y){ const pieces=[]; const count=20+Math.floor(Math.random()*30); for(let i=0;i<count;i++){ pieces.push({x,y,vx:(Math.random()-0.5)*6,vy:(Math.random()-0.5)*6,color:`hsl(${Math.random()*360},90%,60%)`,life:60+Math.random()*40})}
-    let t=0; const anim=setInterval(()=>{ctx.clearRect(x-120,y-120,240,240); pieces.forEach(p=>{ctx.fillStyle=p.color; ctx.globalAlpha=p.life/100; ctx.beginPath(); ctx.arc(p.x,p.y,2.6,0,Math.PI*2); ctx.fill(); p.x+=p.vx; p.y+=p.vy; p.vy+=0.08; p.life-=1}); t++; if(pieces.every(p=>p.life<=0)){clearInterval(anim)} },16);
-  }
-
-  // autoplay small hearts in background
-  setInterval(()=>{ const h=document.createElement('div'); h.className='float-emoji'; h.textContent='✨'; h.style.left=Math.random()*100+'vw'; h.style.fontSize=(12+Math.random()*24)+'px'; document.body.appendChild(h); setTimeout(()=>h.remove(),6000); },800);
-
-  // If audio file path is local (dev will convert this path to url). It's included above as src.
-</script>
 </body>
 </html>
