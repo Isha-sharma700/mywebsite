@@ -1,131 +1,199 @@
-<section class="trust-banner" style="padding:28px 16px; background:#fff; margin-bottom:28px;">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy Birthday Aniket 🎉</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Animate.css + Swiper -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
   <style>
-       /* Larger, centered trust cards */
-    .trust-row{display:flex; justify-content:center; flex-wrap:wrap; gap:36px; align-items:stretch; max-width:1180px; margin:0 auto;}
-    .trust-card{flex:1 1 340px; max-width:420px; background:transparent; text-align:left; padding:8px;}
-    .trust-card img{width:100%; height:auto; border-radius:20px; box-shadow:0 8px 24px rgba(0,0,0,0.08); display:block;}
-    .trust-card h3{margin-top:14px; color:#3a0ca3; font-size:20px;}
-    .trust-card p{color:#6a4c93; margin:8px 0 0;}
-    @media (max-width:900px){ .trust-card{flex:1 1 320px; max-width:360px;} }
-    @media (max-width:520px){ .trust-row{gap:20px;} .trust-card{flex:1 1 100%; max-width:100%;} .trust-card h3{font-size:18px;} }
+    :root{--accent:#ff2a6d;--pink:#ff9bc4}
+    body {margin:0;font-family:'Poppins',sans-serif;background:linear-gradient(135deg,var(--pink),#ffdbe6);overflow-x:hidden}
+    .container{max-width:1100px;margin:0 auto;padding:28px}
+    .title{color:#fff;font-size:44px;font-weight:800;text-align:center;margin-top:10px;text-shadow:0 6px 18px rgba(0,0,0,0.12)}
 
-    .trust-banner-inner{
-      max-width:1400px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      font-size: large;
-      flex-wrap:wrap;
-    }
+    /* Teddy */
+    .teddy-wrap{display:flex;justify-content:center;margin:18px 0}
+    .teddy{width:200px;cursor:pointer;transform-origin:center;animation:floaty 3s ease-in-out infinite}
+    @keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
 
-    /* Bigger, responsive gif */
-    .trust-banner-img{
-      width:1000px;
-      max-width:100%;
-      height:auto;
-      border-radius:12px;
-      box-shadow:0 12px 36px rgba(0,0,0,0.12);
-      display:block;
-      object-fit:cover;
-    }
+    /* Buttons */
+    .controls{display:flex;justify-content:center;gap:12px;margin-bottom:18px}
+    .btn{background:var(--accent);color:#fff;padding:12px 20px;border-radius:40px;border:none;font-weight:700;cursor:pointer;box-shadow:0 8px 20px rgba(255,42,109,0.18)}
+    .btn.ghost{background:transparent;border:2px solid #fff}
 
-    .trust-banner-content{max-width:700px;text-align:left;}
-    .trust-banner-content h3{margin:0 0 px;color:#3a0ca3;font-size:26px;}
-    .trust-banner-content p{margin:0 0 12px;color:#6a4c93;font-size:16px;}
-    .trust-banner-cta{display:inline-block;background:#5a189a;color:#fff;padding:10px 14px;border-radius:8px;text-decoration:none;font-weight:600;}
+    /* Surprise box */
+    .surprise{display:none;background:#fff;border-radius:16px;padding:18px;margin:16px auto;max-width:720px;box-shadow:0 10px 30px rgba(0,0,0,0.12);text-align:center}
+    .surprise h2{color:var(--accent);margin:6px 0}
 
-    /* scale down on medium screens */
-    @media (max-width:1200px){
-      .trust-banner-img{width:1000px; max-width:100%;}
-    }
+    /* Photo gallery (swiper) */
+    .gallery-wrap{margin-top:22px}
+    .swiper-slide{display:flex;flex-direction:column;align-items:center;gap:10px}
+    .photo-card{width:240px;height:160px;border-radius:12px;overflow:hidden;box-shadow:0 8px 20px rgba(0,0,0,0.12)}
+    .photo-card img{width:100%;height:100%;object-fit:cover}
 
-    /* mobile adjustments */
-    @media (max-width:1000px){
-      .trust-banner-img{width:1000px; max-width:100%;}
-      .trust-banner-content{text-align:center;}
-    }
+    /* Floating hearts/teddies */
+    .float-emoji{position:fixed;font-size:28px;pointer-events:none;opacity:0.9}
 
-    @media (max-width:1000px){
-      .trust-banner-img{width:100%; max-width:100%;}
-      .trust-banner-inner{padding:0 12px;}
-      .trust-banner-content h3{font-size:20px;}
-    }
+    /* Fireworks canvas sits behind content */
+    #fireworks{position:fixed;left:0;top:0;width:100%;height:100%;z-index:0;pointer-events:none}
+
+    /* Page content sits above */
+    .page{position:relative;z-index:2}
+
+    /* audio controls style */
+    .audio-control{position:fixed;left:18px;bottom:18px;z-index:99;background:#fff;border-radius:12px;padding:8px 10px;box-shadow:0 8px 20px rgba(0,0,0,0.12)}
+
+    /* responsive */
+    @media (max-width:900px){.swiper-slide .photo-card{width:160px;height:110px}.swiper-slide{margin-bottom:12px}.title{font-size:30px}.teddy{width:140px}}
   </style>
+</head>
+<body>
 
-  <div class="trust-banner-inner">
-    <img src="img/banner.gif" alt="Trusted by millions" style="width:100%;" class="trust-banner-img">
-    <div class="trust-banner-content">
-     
-    </div>
-  </div>
-</section>
-<section class="trust-section" style="text-align:center; padding:5px 5px; background:#faf5ff;">
-  <h2 style="font-size:42px; font-weight:700; margin-bottom:40px; color:#5a189a; font-family:sans-serif;">
-    Why You Can Trust Zoogol
-  </h2>
+<canvas id="fireworks"></canvas>
 
-
-  <div class="trust-row">
-    <div class="trust-card">
-      <img src="img\Fraud2.jpg" alt="Secure Payments">
-      <h3 style="font-family: sans-serif;">Secure Payments</h3>
-      <p style="font-family: sans-serif;">Zoogol uses advanced encryption and fraud detection to keep your payments safe.
-Whether you shop, earn cashback, or refer a friend — your money is always protected.
-Because true rewards come with trust.</p>
-    </div>
-
-    <div class="trust-card">
-      <img src="img\Fraud1.jpg" alt="Fraud Protection">
-      <h3 style="font-family: sans-serif;">Fraud Protection</h3>
-      <p style="font-family: sans-serif;">Zoogol’s intelligent fraud protection monitors every payment in real time.
-Advanced detection tools instantly flag unusual patterns.
-So you can focus on shopping — while we handle the safety.</p>
-    </div>
-
-    <div class="trust-card">
-      <img src="img\Fraud3.jpg" alt="Verified Partners">
-      <h3 style="font-family: sans-serif;">Verified Partners</h3>
-      <p style="font-family: sans-serif;">Every partner on Zoogol goes through a strict verification process.
-We collaborate only with certified merchants and trusted brands.
-So every deal, offer, and cashback you receive comes from genuine sources.</p>
-    </div>
-  </div>
-</section>
-
-
-<section class="safety-section py-5" style="padding:40px 20px; text-align:center;">
+<div class="page">
   <div class="container">
-     <h2 style="font-size:42px; font-weight:700; margin-bottom:24px; color:#5a189a; font-family: sans-serif;">How We Keep You Safe</h2>
+    <h1 class="title animate__animated animate__tada">🎉 Happy Birthday Aniket 🎉</h1>
 
-     <style>
-       /* 2-per-row centered safety grid */
-       .safety-grid{display:grid; grid-template-columns:repeat(2, minmax(260px,1fr)); gap:24px; width:760px; max-width:100%; margin:0 auto; align-items:start; justify-items:center;}
-       .safety-card{width:100%; text-align:center; background:transparent; padding:8px;}
-       .safety-card img{width:100%; height:auto; border-radius:20px; box-shadow:0 6px 18px rgba(0,0,0,0.08); display:block; margin:0 auto;}
-       .safety-card h3{margin-top:12px; color:#3a0ca3; font-size:18px;}
-       .safety-card p{color:#6a4c93; margin:6px 0 0;}
-       @media (max-width:680px){ .safety-grid{grid-template-columns:1fr; width:100%; padding:0 12px;} }
-     </style>
+    <div class="teddy-wrap">
+      <img id="teddy" class="teddy animate__animated animate__bounceIn" src="https://pngimg.com/uploads/teddy_bear/teddy_bear_PNG84.png" alt="teddy" />
+    </div>
 
-     <div class="safety-grid" style="margin-top:10px;">
-       <div class="safety-card">
-         <img src="img/Fraud6.jpg" alt="Regular Security Audits">
-         
-       </div>
+    <div class="controls">
+      <button class="btn" id="surpriseBtn">Open Surprise 🎁</button>
+      <button class="btn ghost" id="musicToggle">Play Music 🎵</button>
+      <button class="btn ghost" id="fireToggle">Fireworks ✨</button>
+    </div>
 
-       <div class="safety-card">
-         <img src="img/Fraud5.jpg" alt="Data Privacy">
-         
-       </div>
+    <div id="surpriseBox" class="surprise animate__animated animate__zoomIn">
+      <h2>Surprise, Aniket! 🎊</h2>
+      <p style="font-size:16px;color:#444;margin:6px 0 12px">Wishing you a day filled with love, laughter and very special moments.</p>
+      <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
+        <button class="btn" onclick="openConfetti()">Make it Rain 🎉</button>
+        <button class="btn" onclick="toggleHearts()">Send Hearts ❤️</button>
+      </div>
+    </div>
 
-       <div class="safety-card">
-         <img src="img/Fraud7.jpg" alt="Continuous Monitoring">
-         
-       </div>
+    <!-- Gallery (Swiper) -->
+    <div class="gallery-wrap">
+      <h3 style="color:#fff;text-align:center;margin-bottom:12px">Memories — add your photos below</h3>
+      <div class="swiper myGallery">
+        <div class="swiper-wrapper">
 
-       <div class="safety-card">
-         <img src="img/Fraud4.jpg" alt="Secure Payments">
-         
-     </div>
+          <!-- Slide 1 -->
+          <div class="swiper-slide">
+            <div class="photo-card"><img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e"></div>
+            <div style="color:#fff;margin-top:6px;font-weight:600">Smile</div>
+          </div>
+
+          <!-- Slide 2 -->
+          <div class="swiper-slide">
+            <div class="photo-card"><img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde"></div>
+            <div style="color:#fff;margin-top:6px;font-weight:600">Friends</div>
+          </div>
+
+          <!-- Slide 3 -->
+          <div class="swiper-slide">
+            <div class="photo-card"><img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d"></div>
+            <div style="color:#fff;margin-top:6px;font-weight:600">Party</div>
+          </div>
+
+          <!-- Slide 4 -->
+          <div class="swiper-slide">
+            <div class="photo-card"><img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e"></div>
+            <div style="color:#fff;margin-top:6px;font-weight:600">Memories</div>
+          </div>
+
+        </div>
+        <!-- navigation (on sides) -->
+        <div class="swiper-button-next" style="color:#fff"></div>
+        <div class="swiper-button-prev" style="color:#fff"></div>
+      </div>
+    </div>
+
   </div>
-</section>
+</div>
+
+<!-- audio control (local file path included) -->
+<div class="audio-control">
+  <audio id="bgAudio" loop src="/mnt/data/Screenshot 2025-11-19 120357.png"></audio>
+  <span id="audioLabel" style="font-weight:700;color:#333;">Music: Off</span>
+</div>
+
+<!-- Swiper + libs -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+<script>
+  // Initialize gallery swiper
+  const gallery = new Swiper('.myGallery', {
+    slidesPerView: 3,
+    spaceBetween: 22,
+    navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
+    breakpoints: { 0:{slidesPerView:1}, 640:{slidesPerView:2}, 900:{slidesPerView:3} }
+  });
+
+  // Teddy click — playful animation and small popup
+  const teddy = document.getElementById('teddy');
+  teddy.addEventListener('click', () => {
+    teddy.classList.add('animate__heartBeat');
+    setTimeout(()=>teddy.classList.remove('animate__heartBeat'),900);
+    alert('🎈 Hey Aniket! Big hugs and happy wishes!');
+  });
+
+  // Surprise box toggle
+  document.getElementById('surpriseBtn').addEventListener('click', ()=>{
+    const box = document.getElementById('surpriseBox');
+    box.style.display = box.style.display==='block'?'none':'block';
+    if(box.style.display==='block') box.scrollIntoView({behavior:'smooth'});
+  });
+
+  // Audio toggle
+  const audio = document.getElementById('bgAudio');
+  const audioLabel = document.getElementById('audioLabel');
+  document.getElementById('musicToggle').addEventListener('click', ()=>{
+    if(audio.paused){ audio.play(); audioLabel.textContent='Music: On'; } else { audio.pause(); audioLabel.textContent='Music: Off'; }
+  });
+
+  // Hearts toggle
+  let heartsOn=false;
+  function toggleHearts(){ heartsOn=!heartsOn; if(heartsOn) spawnHearts(); }
+  function toggleHearts(){ 
+  heartsOn = !heartsOn; 
+  if(heartsOn) spawnHearts(); 
+}
+
+  function spawnHearts(){ if(!heartsOn) return; const heart = document.createElement('div'); heart.className='float-emoji'; heart.innerHTML='❤'; heart.style.left=Math.random()*100+'vw'; heart.style.fontSize=(20+Math.random()*30)+'px'; document.body.appendChild(heart); setTimeout(()=>heart.remove(),6000); setTimeout(spawnHearts,300); }
+
+  // Confetti (simple canvas) when clicking Make it Rain
+  function openConfetti(){
+    for(let i=0;i<60;i++){
+      const el=document.createElement('div'); el.innerHTML='🎊'; el.style.position='fixed'; el.style.left=Math.random()*100+'vw'; el.style.top='-30px'; el.style.fontSize=(12+Math.random()*28)+'px'; el.style.zIndex=999; document.body.appendChild(el);
+      const dur=3000+Math.random()*2000; el.animate([{transform:'translateY(0) rotate(0)'},{transform:'translateY(110vh) rotate(720deg)'}],{duration:dur,iterations:1,easing:'cubic-bezier(.17,.67,.83,.67)'});
+      setTimeout(()=>el.remove(),dur+50);
+    }
+  }
+
+  // Fireworks canvas simple implementation
+  const canvas=document.getElementById('fireworks'); const ctx=canvas.getContext('2d'); let W, H; function resize(){W=canvas.width=innerWidth;H=canvas.height=innerHeight;} resize(); addEventListener('resize',resize);
+  let fireworksOn=false; document.getElementById('fireToggle').addEventListener('click',()=>{fireworksOn=!fireworksOn; if(fireworksOn) loopFireworks();});
+
+  // fireworks particles
+  function loopFireworks(){ if(!fireworksOn) return; createFirework(Math.random()*W*0.8+W*0.1, Math.random()*H*0.4+H*0.1); setTimeout(loopFireworks,400+Math.random()*600); }
+  function createFirework(x,y){ const pieces=[]; const count=20+Math.floor(Math.random()*30); for(let i=0;i<count;i++){ pieces.push({x,y,vx:(Math.random()-0.5)*6,vy:(Math.random()-0.5)*6,color:`hsl(${Math.random()*360},90%,60%)`,life:60+Math.random()*40})}
+    let t=0; const anim=setInterval(()=>{ctx.clearRect(x-120,y-120,240,240); pieces.forEach(p=>{ctx.fillStyle=p.color; ctx.globalAlpha=p.life/100; ctx.beginPath(); ctx.arc(p.x,p.y,2.6,0,Math.PI*2); ctx.fill(); p.x+=p.vx; p.y+=p.vy; p.vy+=0.08; p.life-=1}); t++; if(pieces.every(p=>p.life<=0)){clearInterval(anim)} },16);
+  }
+
+  // autoplay small hearts in background
+  setInterval(()=>{ const h=document.createElement('div'); h.className='float-emoji'; h.textContent='✨'; h.style.left=Math.random()*100+'vw'; h.style.fontSize=(12+Math.random()*24)+'px'; document.body.appendChild(h); setTimeout(()=>h.remove(),6000); },800);
+
+  // If audio file path is local (dev will convert this path to url). It's included above as src.
+</script>
+</body>
+</html>
